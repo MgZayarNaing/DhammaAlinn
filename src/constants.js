@@ -1,0 +1,1 @@
+export const APP_NAME = "ဓမ္မအလင်း";

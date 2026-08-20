@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import HomeScreen from "@screens/home/HomeScreen";
+import HomeStack from '@screens/home/HomeStack';
 import AudioScreen from "@screens/audio/AudioScreen";
 import SearchScreen from "@screens/search/SearchScreen";
 import FavoriteScreen from "@screens/favorite/FavoriteScreen";
@@ -35,7 +35,7 @@ const TabNavigator = () => {
   >
     <Tab.Screen
       name="Home"
-      component={HomeScreen}
+      component={HomeStack}
       options={{
         tabBarLabel: 'ပင်မ',
         tabBarIcon: ({ focused }) => (
