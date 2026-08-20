@@ -1,12 +1,31 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
+import { StatusBar, StyleSheet } from 'react-native'
+import AppNavigator from '@/navigation/AppNavigator'
+import SplashScreen from '@screens/splash/SplashScreen'
 
 const App = () => {
+
+  const [showSplash, setShowSplash] = useState(true);
+
+  if (showSplash)
+    return <SplashScreen onAnimationEnd={() => setShowSplash(false)} />
+
   return (
-    <View>
-      <Text>App</Text>
-    </View>
+    <SafeAreaProvider>
+      <SafeAreaView style={styles.container}>
+        <StatusBar barStyle="dark-content" backgroundColor="#ffffff" />
+        <AppNavigator />
+      </SafeAreaView>
+    </SafeAreaProvider>
   )
 }
 
 export default App
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+})

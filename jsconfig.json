@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "checkJs": true,
+    "jsx": "react-native",
+    "noImplicitAny": false,
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@screens/*": [
+        "./src/screens/*"
+      ],
+      "@assets/*": [
+        "./src/assets/*"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
