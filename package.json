@@ -1,6 +1,6 @@
 {
-  "name": "DhammaAlinn",
-  "version": "0.0.1",
+  "name": "ဓမ္မအလင်း",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
