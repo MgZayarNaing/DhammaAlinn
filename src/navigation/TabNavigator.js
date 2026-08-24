@@ -3,7 +3,7 @@ import { View, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import HomeStack from '@screens/home/HomeStack';
-import AudioScreen from "@screens/audio/AudioScreen";
+import AudioStack from "@screens/audio/AudioStack";
 import SearchScreen from "@screens/search/SearchScreen";
 import FavoriteScreen from "@screens/favorite/FavoriteScreen";
 import SettingsScreen from "@screens/setting/SettingScreen";
@@ -29,7 +29,7 @@ const TabNavigator = () => {
       tabBarShowLabel: true,
       tabBarStyle: styles.tabBar,
       tabBarLabelStyle: styles.label,
-      tabBarActiveTintColor: COLORS.bold,
+      tabBarActiveTintColor: COLORS.dark,
       tabBarInactiveTintColor: COLORS.textColor,
     }}
   >
@@ -45,7 +45,7 @@ const TabNavigator = () => {
     />
     <Tab.Screen
       name="Audio"
-      component={AudioScreen}
+      component={AudioStack}
       options={{
         tabBarLabel: 'တရားနာ',
         tabBarIcon: ({ focused }) => (
