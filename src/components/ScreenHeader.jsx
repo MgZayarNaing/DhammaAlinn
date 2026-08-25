@@ -7,10 +7,6 @@ import { APP_NAME } from '@/constants'
 const ScreenHeader = ({ title = APP_NAME }) => {
     return (
         <>
-            <StatusBar
-                backgroundColor={COLORS.bold}
-                barStyle="light-content"
-            />
             <LinearGradient
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0 }}

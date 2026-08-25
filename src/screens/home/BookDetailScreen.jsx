@@ -31,7 +31,7 @@ const BookDetailScreen = ({ route, navigation }) => {
     <SafeAreaView style={styles.container} edges={['top']}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backBtn}>
-          <Icon name="arrow-back" size={24} color={COLORS.bold} />
+          <Icon name="arrow-back" size={24} color={COLORS.dark} />
         </TouchableOpacity>
         <Text style={styles.headerTitle} numberOfLines={1}>
           {book.title}
@@ -44,7 +44,7 @@ const BookDetailScreen = ({ route, navigation }) => {
           <Icon
             name={saved ? 'bookmark' : 'bookmark-border'}
             size={24}
-            color={saved ? COLORS.secondary : COLORS.bold}
+            color={saved ? COLORS.secondary : COLORS.dark}
           />
         </TouchableOpacity>
       </View>
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     overflow: 'hidden',
     borderWidth: 1,
-    borderColor: COLORS.bold,
+    borderColor: COLORS.dark,
     elevation: 4,
     shadowColor: COLORS.secondary,
     shadowOffset: { width: 0, height: 2 },
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
   },
   author: {
     fontSize: 14,
-    color: COLORS.bold,
+    color: COLORS.dark,
     marginBottom: 10,
   },
   description: {
@@ -157,13 +157,13 @@ const styles = StyleSheet.create({
   contentBox: {
     borderRadius: 12,
     borderWidth: 1,
-    borderColor: COLORS.bold,
+    borderColor: COLORS.dark,
     padding: 16,
   },
   contentLabel: {
     fontSize: 16,
     fontWeight: '700',
-    color: COLORS.bold,
+    color: COLORS.dark,
     marginBottom: 10,
   },
   content: {

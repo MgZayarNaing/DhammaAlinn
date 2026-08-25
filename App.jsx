@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
-import { StatusBar, StyleSheet } from 'react-native'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
+import { StatusBar } from 'react-native'
 import AppNavigator from '@/navigation/AppNavigator'
 import SplashScreen from '@screens/splash/SplashScreen'
 
@@ -13,8 +13,12 @@ const App = () => {
 
   return (
     <SafeAreaProvider>
-        <StatusBar barStyle="dark-content" backgroundColor="#ffffff" />
-        <AppNavigator />
+      <StatusBar
+        backgroundColor="transparent"
+        translucent={true}
+        barStyle="dark-content"
+      />
+      <AppNavigator />
     </SafeAreaProvider>
   )
 }

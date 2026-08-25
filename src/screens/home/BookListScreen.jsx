@@ -19,7 +19,7 @@ const BookItem = ({ book, onPress }) => (
     <TouchableOpacity style={styles.book} activeOpacity={0.85} onPress={onPress}>
       <Image source={defaultBookImg} style={styles.bookCover} />
       <View style={styles.bookInfo}>
-        <Text style={styles.bookTitle} numberOfLines={2}>
+        <Text style={styles.bookTitle} numberOfLines={1}>
           {book.title}
         </Text>
         <Text style={styles.bookAuthor} numberOfLines={1}>
@@ -48,7 +48,7 @@ const BookListScreen = ({ route, navigation }) => {
     <SafeAreaView style={styles.container} edges={['top']}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backBtn}>
-          <Icon name="arrow-back" size={24} color={COLORS.bold} />
+          <Icon name="arrow-back" size={24} color={COLORS.dark} />
         </TouchableOpacity>
         <Text style={styles.headerTitle} numberOfLines={1}>
           {categoryTitle}
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
   },
   bookAuthor: {
     fontSize: 12,
-    color: COLORS.bold,
+    color: COLORS.dark,
   },
   saveBtn: {
     position: 'absolute',

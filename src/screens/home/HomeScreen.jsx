@@ -20,16 +20,16 @@ const CardItem = ({ image, title, fullWidth, onPress }) => (
   >
     <View style={styles.card}>
       <Image source={{ uri: image }} style={styles.cardImage} />
-      <Text style={styles.cardTitle}>{title}</Text>
+      <Text style={styles.cardTitle} numberOfLines={1}>{title}</Text>
     </View>
   </TouchableOpacity>
 );
 
 const HomeScreen = ({ navigation }) => {
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.statusBarWrapper} edges={['top']}>
       <ScreenHeader />
-      <ScrollView contentContainerStyle={styles.scrollContent}>
+      <ScrollView style={styles.container} contentContainerStyle={styles.scrollContent}>
         <View style={styles.grid}>
           {CATEGORIES.map((item) => (
             <CardItem
@@ -52,8 +52,11 @@ const HomeScreen = ({ navigation }) => {
 const { width } = Dimensions.get('window');
 const cardGap = 8;
 const styles = StyleSheet.create({
+  statusBarWrapper: {
+    backgroundColor: COLORS.primary,
+  },
   container: {
-    flex: 1,
+    backgroundColor: COLORS.container,
   },
   scrollContent: {
     padding: cardGap * 2,
@@ -65,15 +68,15 @@ const styles = StyleSheet.create({
     gap: cardGap,
   },
   card: {
-    backgroundColor: COLORS.primary,
-    borderRadius: 12,
+    backgroundColor: COLORS.light,
+    borderRadius: 15,
     borderWidth: 1,
-    borderColor: COLORS.bold,
+    borderColor: COLORS.secondary,
     marginBottom: cardGap,
     overflow: 'hidden',
     elevation: 2, // Android shadow
     shadowColor: COLORS.secondary, // IOS shadow
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
   },
@@ -90,7 +93,7 @@ const styles = StyleSheet.create({
   },
   cardTitle: {
     padding: cardGap,
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: '700',
     color: COLORS.textColor,
     textAlign: 'center',
