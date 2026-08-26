@@ -173,5 +173,16 @@ export const BOOKS = [
 export const getBooksByCategory = (categoryId) =>
   BOOKS.filter((book) => book.categoryId === categoryId);
 
+export const searchBooks = (query) => {
+  if (!query.trim()) return BOOKS;
+  const lowerQuery = query.toLowerCase();
+  return BOOKS.filter(
+    (book) =>
+      book.title.toLowerCase().includes(lowerQuery) ||
+      book.author.toLowerCase().includes(lowerQuery) ||
+      book.description.toLowerCase().includes(lowerQuery),
+  );
+};
+
 export const getBookById = (bookId) =>
   BOOKS.find((book) => book.id === bookId);
