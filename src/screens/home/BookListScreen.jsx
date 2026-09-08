@@ -11,10 +11,11 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { getBooksByCategory } from './BookData';
 import { COLORS } from '@theme/colors';
+import { useFavorites } from '@/context/favorites/FavoritesContext';
 
 const defaultBookImg = require('@assets/images/default_book.png');
 
-const BookItem = ({ book, onPress }) => (
+const BookItem = ({ book, onPress, saved, onToggleSave }) => (
   <View style={styles.bookWrapper}>
     <TouchableOpacity style={styles.book} activeOpacity={0.85} onPress={onPress}>
       <Image source={defaultBookImg} style={styles.bookCover} />
@@ -30,11 +31,12 @@ const BookItem = ({ book, onPress }) => (
     <TouchableOpacity
       style={styles.saveBtn}
       hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+      onPress={onToggleSave}
     >
       <Icon
-        name={'bookmark'}
+        name={saved ? 'bookmark' : 'bookmark-border'}
         size={22}
-        color={COLORS.secondary}
+        color={saved ? COLORS.secondary : COLORS.dark}
       />
     </TouchableOpacity>
   </View>
@@ -43,6 +45,7 @@ const BookItem = ({ book, onPress }) => (
 const BookListScreen = ({ route, navigation }) => {
   const { categoryId, categoryTitle } = route.params;
   const books = getBooksByCategory(categoryId);
+  const { isBookFavorite, toggleBook } = useFavorites();
 
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
@@ -62,6 +65,8 @@ const BookListScreen = ({ route, navigation }) => {
             <BookItem
               key={book.id}
               book={book}
+              saved={isBookFavorite(book.id)}
+              onToggleSave={() => toggleBook(book.id)}
               onPress={() => navigation.navigate('BookDetail', { bookId: book.id })}
 
             />

@@ -10,14 +10,15 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { getBookById } from './BookData';
 import { COLORS } from '@theme/colors';
-import { useState } from 'react';
+import { useFavorites } from '@/context/favorites/FavoritesContext';
 
 const defaultBookImg = require('@assets/images/default_book.png');
 
 const BookDetailScreen = ({ route, navigation }) => {
   const { bookId } = route.params;
   const book = getBookById(bookId);
-  const [saved, setSaved] = useState(false);
+  const { isBookFavorite, toggleBook } = useFavorites();
+  const saved = isBookFavorite(bookId);
 
   if (!book) {
     return (
@@ -37,7 +38,7 @@ const BookDetailScreen = ({ route, navigation }) => {
           {book.title}
         </Text>
         <TouchableOpacity
-          onPress={() => setSaved(true)}
+          onPress={() => toggleBook(bookId)}
           style={styles.saveBtn}
           hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
         >

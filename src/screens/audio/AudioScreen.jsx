@@ -17,6 +17,7 @@ import {
   searchAudio,
 } from './AudioData';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useFavorites } from '@/context/favorites/FavoritesContext';
 
 Sound.setCategory('Playback');
 
@@ -30,10 +31,10 @@ const AudioScreen = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [currentPlayingId, setCurrentPlayingId] = useState(null);
-  const [savedAudios, setSavedAudios] = useState(new Set());
   const [playingProgress, setPlayingProgress] = useState(0);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
+  const { isAudioFavorite, toggleAudio } = useFavorites();
   
   const soundRef = useRef(null);
   const progressInterval = useRef(null);
@@ -115,18 +116,6 @@ const AudioScreen = () => {
     setCurrentTime(seekTime);
   };
 
-  const handleSave = (audioId) => {
-    setSavedAudios((prev) => {
-      const newSet = new Set(prev);
-      if (newSet.has(audioId)) {
-        newSet.delete(audioId);
-      } else {
-        newSet.add(audioId);
-      }
-      return newSet;
-    });
-  };
-
   // Render components
   const renderCategoryChip = (category) => {
     const isSelected = selectedCategory === category.id;
@@ -145,7 +134,7 @@ const AudioScreen = () => {
 
   const renderAudioItem = ({ item }) => {
     const isPlaying = currentPlayingId === item.id;
-    const isSaved = savedAudios.has(item.id);
+    const isSaved = isAudioFavorite(item.id);
 
     return (
       <View style={styles.audioItem}>
@@ -195,7 +184,7 @@ const AudioScreen = () => {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.saveButton}
-            onPress={() => handleSave(item.id)}
+            onPress={() => toggleAudio(item.id)}
           >
             <Icon
               name={isSaved ? 'cloud-done' : 'download'}

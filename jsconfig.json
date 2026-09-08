@@ -17,7 +17,7 @@
         "./src/assets/*"
       ],
       "@theme/*": [
-        "./src/theme/*"
+        "./src/utils/theme/*"
       ]
     }
   },

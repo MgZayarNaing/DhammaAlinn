@@ -1,8 +1,8 @@
-import { Text, StatusBar, StyleSheet } from 'react-native'
+import { Text, StyleSheet } from 'react-native'
 import React from 'react'
 import LinearGradient from 'react-native-linear-gradient'
-import { COLORS } from '@/theme/colors'
-import { APP_NAME } from '@/constants'
+import { COLORS } from '@theme/colors'
+import { name as APP_NAME } from '../../app.json';
 
 const ScreenHeader = ({ title = APP_NAME }) => {
     return (
@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
         fontSize: 22,
         fontWeight: '700',
         color: COLORS.primary,
+        fontStyle:'italic'
     },
 });
 
